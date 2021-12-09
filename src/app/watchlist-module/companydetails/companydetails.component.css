@@ -1,0 +1,9 @@
+:host ::ng-deep .p-card-header	{
+    background-color: indigo;
+    font-weight: bolder;
+    color: white;
+}
+
+:host ::ng-deep  .p-panel {
+    background-color: indigo;
+}

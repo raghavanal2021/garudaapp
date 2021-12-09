@@ -1,0 +1,29 @@
+<div>
+<p-card styleClass="width:90%">
+    <ng-template pTemplate="header" styleClass="p-card-header" >
+        Company Information
+    </ng-template>
+<p-autoComplete 
+    [(ngModel)]="cselectedCompanies" [suggestions]="cfilteredCompanies" 
+    (completeMethod)="filterCompanies($event)" field="CompanyName" >
+</p-autoComplete>
+<div class="mt-5">
+    <p-panel header = "Basic Info" [toggleable]="true" styleClass="background-color: indigo;">
+    <table>
+    <tr>
+    <td>Company Name:</td> <td>{{cselectedCompanies['CompanyName']}}</td>
+    </tr>
+    <tr>
+    <td>Industry:</td><td>{{cselectedCompanies['Industry']}}</td>
+    </tr>
+    <tr>
+    <td>ISIN Code:</td><td>{{cselectedCompanies['ISINCode']}}</td>
+    </tr>
+    </table>
+</p-panel>
+</div>
+    <ng-template pTemplate="footer">
+    
+    </ng-template>
+</p-card>
+</div>

@@ -1,0 +1,22 @@
+<div>
+<div>
+<p-card header="Add to watchlist">
+<div  >
+    <p-autoComplete [(ngModel)]="selectedstock" [suggestions]="filteredstock" (completeMethod)="filterStocks($event)" field="CompanyName"></p-autoComplete>
+    <button type="button" pButton icon="pi pi-plus-circle" (click)="selectstocks()"></button>
+    </div>
+    
+</p-card>
+ <p-divider type="dashed">
+    <b>Added Stocks</b>
+<div class="grid grid-cols-1 md:grid-cols-6">
+<span class="mt-1 p-1" *ngFor="let stk of selstock">
+<p-chip label = {{stk.Symbol}} icon="pi pi-microsoft" styleClass="p-mr-2" (click)="removestock(stk.Symbol)" >   
+</p-chip>
+</span>
+</div>
+</p-divider>
+<div>
+<button type="button" pButton icon="pi pi-plus-circle" label="Add to Watchlist" (click)="finalizelist()"></button>
+</div>
+</div>

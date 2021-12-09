@@ -1,0 +1,55 @@
+        <div class="card">
+        <p-dataView #dv [value]="strat" [paginator]="true" [rows]="9" filterBy="strategy_name"  [sortField]="sortField" [sortOrder]="sortOrder" layout="list">
+        <ng-template pTemplate="header">
+            <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
+              <span>
+                  <i class="pi pi-search mr-2"></i>
+                  <input type="search" pInputText placeholder="Search by Strategy" (input)="dv.filter($event.target.value)" class="rounded border-2"/>
+            </span>
+            
+            <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+            
+            </div>
+            </ng-template>
+            <ng-template let-strat pTemplate="listItem">
+            <div class="p-col-12">
+            <div class="product-list-item p-2">
+                  <div class="product-list-detail">
+                      
+                      <div class="product-name"> 
+                      {{strat.strategy_name}} 
+                      <span><p-inputSwitch [(ngModel)]="strat.is_enabled"></p-inputSwitch></span></div>
+                      
+                      <div class="product-description">{{strat.strategy_desc}}</div>
+                </div>
+                <div class="product-grid-item-bottom">
+            <p-button class="ml-5" (click)="handlePerformanceButton(strat.strategy_name)">Performance</p-button>
+            <p-button class="ml-5">Details</p-button>
+           </div>
+            </div>
+            </div>
+            </ng-template>
+            <ng-template let-strat pTemplate="gridItem">
+            <div class="p-col-6 p-md-2">
+               <div class="product-grid-item card">
+                  <div class="product-grid-item-top">
+                      <div>
+                          <i class="pi pi-tag product-category-icon"></i>
+                          <span class="product-category">{{strat.strategy_name}}</span>
+                      </div>
+                      <span><p-inputSwitch [(ngModel)]="strat.is_enabled"></p-inputSwitch></span>
+                  </div>
+            
+              <div class="product-grid-item-content">
+              {{strat.strategy_desc}}
+              </div>
+              <div class="product-grid-item-bottom">
+             <p-button class="ml-5">Performance</p-button>
+            <p-button class="ml-5">Details</p-button>
+           </div>
+              </div>
+           </div>
+           
+            </ng-template>
+        </p-dataView>
+        </div>

@@ -1,0 +1,56 @@
+<div class="p-grid">
+    <div class="p-col-6 p-md-4">
+        <div class="p-inputgroup">
+            <span class="p-inputgroup-addon mt-5">Strategy Name</span>
+            <input type="text" pInputText placeholder="Strategy Name" class="mt-5 mr-2" [(ngModel)]="strategyname">
+            <span class="p-inputgroup-addon mt-5">Strategy Description</span>
+            <input type="text" pInputText placeholder="Describe your Strategy" class="mt-5"  [(ngModel)]="strategydesc">
+        </div>
+    </div>
+    <p-divider align="center">
+        <span class="p-tag">Data Setup</span>
+    </p-divider>
+    <div class="p-grid">
+        <div class="p-col">
+        <div class="mt-10">
+            <p-pickList [source]="sourceProducts" [target]="targetProducts" sourceHeader="Available" targetHeader="Selected" dragdrop="true" [responsive]="true" [sourceStyle]="{'height':'200px'}" [targetStyle]="{'height':'200px'}" filterBy="Symbol"
+            sourceFilterPlaceholder="Search by name" targetFilterPlaceholder="Search by name">
+            <ng-template let-stocklistmodel pTemplate="item">
+                <div class="product-list-detail">
+                    <h5 class="p-mb-2">{{stocklistmodel.Symbol}}</h5>
+                    <i class="pi pi-tag product-category-icon"></i>
+                <span class="product-category"> {{stocklistmodel.CompanyName}}</span>
+                <p-chip styleClass="p-mr-2 bg-primary">
+                    {{stocklistmodel.Industry}}
+                </p-chip>
+                </div>
+            </ng-template>
+            </p-pickList>
+        </div>
+    </div>
+</div>
+<div class="grid grid-cols-4 gap-4">
+<div class = "p-col-1">
+    <span class="p-inputgroup-addon mt-5">Time Period</span>
+</div>
+<div class="mt-5">
+    <span class="mt-5"><p-dropdown [options]="timeperiod" [(ngModel)]="selectedtimeperiod" optionLabel="PeriodDesc" optionValue="PeriodCode" ></p-dropdown></span>
+</div>
+<div class = "p-col-2">
+    <span class="p-inputgroup-addon mt-5">Enable Feed</span>
+</div>
+<div class="mt-5 pt-2">
+    <p-inputSwitch [(ngModel)]="checked"></p-inputSwitch>
+</div>
+</div>
+    <p-divider align="center">
+        <span class="p-tag">Indicator Setup</span>
+    </p-divider>
+
+    <p-divider>
+    </p-divider>
+<div class="ml-50">
+    <p-button (click)="handlecreateStrategy()">Create Strategy</p-button>
+</div>
+
+
